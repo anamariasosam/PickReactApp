@@ -12,6 +12,7 @@
     "axios": "^0.18.0",
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
+    "react-masonry-component": "^6.0.2",
     "react-scripts": "1.1.1",
     "tachyons": "^4.9.1"
   },

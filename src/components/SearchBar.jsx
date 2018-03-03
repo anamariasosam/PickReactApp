@@ -20,7 +20,7 @@ export default class SearchBar extends Component {
 
   render() {
     return (
-      <section className="bg-red mw9 center pa4 ph7-l">
+      <section className="bg-gold mw9 center pa4 ph7-l">
         <form className="black-80" onSubmit={this.handleSubmit}>
           <div className="measure">
             <input
