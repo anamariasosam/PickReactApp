@@ -1,18 +1,56 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import axios from 'axios';
+
+import Header from './components/Header'
+import SearchBar from './components/SearchBar'
+
+import PACKAGE from '../package.json'
+const ENDPOINT = PACKAGE.config.wordToImages[process.env.NODE_ENV]
 
 class App extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      images: [],
+      loadingImages: false,
+    };
+
+    this.imageSearch = this.imageSearch.bind(this)
+  }
+
+  async imageSearch(word) {
+    this.setState({
+      loadingImages: true,
+    })
+
+    this.unsplash(word)
+  }
+
+  unsplash(word) {
+    axios.get(
+      `${ENDPOINT}/unsplash/`, {
+      params: { word }
+    })
+    .then(res => this.handleImagesResponse(res.data))
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  handleImagesResponse(images) {
+    this.setState({
+      images: this.state.images.concat(images),
+      loadingImages: false,
+    })
+  }
+
+
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+        <Header />
+        <SearchBar onSearchTermChange={ this.imageSearch } />
       </div>
     );
   }
