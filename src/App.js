@@ -6,6 +6,7 @@ import SearchBar from './components/SearchBar'
 import Gallery from './components/Gallery'
 import Loading from './components/Loading'
 import Footer from './components/Footer'
+import GithubRibbon from './components/GithubRibbon'
 
 import PACKAGE from '../package.json'
 const ENDPOINT = PACKAGE.config.wordToImages[process.env.NODE_ENV]
@@ -31,11 +32,23 @@ class App extends Component {
     })
 
     this.unsplash(word)
+    this.pixabay(word)
   }
 
   unsplash(word) {
     axios.get(
       `${ENDPOINT}/unsplash/`, {
+      params: { word }
+    })
+    .then(res => this.handleImagesResponse(res.data))
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  pixabay(word) {
+    axios.get(
+      `${ENDPOINT}/pixabay/`, {
       params: { word }
     })
     .then(res => this.handleImagesResponse(res.data))
@@ -63,6 +76,7 @@ class App extends Component {
         <SearchBar onSearchTermChange={ this.imageSearch } />
         {displayImages}
         <Footer />
+        <GithubRibbon />
       </div>
     );
   }

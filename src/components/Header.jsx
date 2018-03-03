@@ -1,7 +1,7 @@
 import React from 'react'
 
 const Header = () => (
-  <header className="bg-gold sans-serif center pa4 pt5-ns ph7-l">
+  <header className="bg-blue sans-serif center pa4 pb2 pt5-ns ph7-l">
       <h1
         className="f2 f1-m f-headline-l measure-narrow lh-title mv0">
         <span

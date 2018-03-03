@@ -19,7 +19,7 @@ export default class Gallery extends Component {
         {this.props.images.map(image => {
           return(
             <div className="fl w-50 w-third-m w-25-ns" key={image.id}>
-              <a href={image.download} download>
+              <a href={image.download} target="_blank">
                 <div className="aspect-ratio aspect-ratio--1x1">
                   <img
                     style={{backgroundImage: `url(${image.url})`}}
