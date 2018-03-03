@@ -4,6 +4,8 @@ import axios from 'axios';
 import Header from './components/Header'
 import SearchBar from './components/SearchBar'
 import Gallery from './components/Gallery'
+import Loading from './components/Loading'
+import Footer from './components/Footer'
 
 import PACKAGE from '../package.json'
 const ENDPOINT = PACKAGE.config.wordToImages[process.env.NODE_ENV]
@@ -14,13 +16,15 @@ class App extends Component {
 
     this.state = {
       images: [],
-      loadingImages: false,
+      loadingImages: true,
     };
+
+    this.unsplash('happy')
 
     this.imageSearch = this.imageSearch.bind(this)
   }
 
-  async imageSearch(word) {
+  imageSearch(word) {
     this.setState({
       images: [],
       loadingImages: true,
@@ -48,11 +52,17 @@ class App extends Component {
   }
 
   render() {
+    const displayImages = this.state.loadingImages ?
+      <Loading /> :
+      <Gallery images={ this.state.images } />
+
     return (
-      <div className="App">
+
+      <div className="w-100 sans-serif">
         <Header />
         <SearchBar onSearchTermChange={ this.imageSearch } />
-        <Gallery images={ this.state.images } />
+        {displayImages}
+        <Footer />
       </div>
     );
   }
