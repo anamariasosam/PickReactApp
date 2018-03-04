@@ -10,7 +10,7 @@ const Header = () => (
         </span>
       </h1>
       <h4 className="f3 fw1 georgia i">
-        Pictures & Inspiration Royalty Free
+        Royalty Free Pictures & Inspiration
       </h4>
   </header>
 )
