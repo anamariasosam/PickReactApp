@@ -4,6 +4,7 @@ const GithubRibbon = () => (
   <a
     href="https://github.com/anamariasosam/pick_react_app"
     target="_blank"
+    rel="noopener noreferrer"
   >
     <img
       style={{position: 'absolute', top: 0, right: 0, border: 0}}

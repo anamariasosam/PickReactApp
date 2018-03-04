@@ -20,7 +20,7 @@ class App extends Component {
       loadingImages: true,
     };
 
-    this.unsplash('happy')
+    this.getImages('happy', ['unsplash'])
 
     this.imageSearch = this.imageSearch.bind(this)
   }
@@ -31,42 +31,28 @@ class App extends Component {
       loadingImages: true,
     })
 
-    this.flickr(word)
-    this.pixabay(word)
-    this.unsplash(word)
+    this.getImages(
+      word,
+      [
+        'flickr',
+        'pixabay',
+        'giphy',
+        'unsplash',
+      ]
+    )
   }
 
-  unsplash(word) {
-    axios.get(
-      `${ENDPOINT}/unsplash/`, {
-      params: { word }
-    })
-    .then(res => this.handleImagesResponse(res.data))
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
-  pixabay(word) {
-    axios.get(
-      `${ENDPOINT}/pixabay/`, {
-      params: { word }
-    })
-    .then(res => this.handleImagesResponse(res.data))
-    .catch(function (error) {
-      console.log(error);
-    });
-  }
-
-  flickr(word) {
-    axios.get(
-      `${ENDPOINT}/flickr/`, {
-      params: { word }
-    })
-    .then(res => this.handleImagesResponse(res.data))
-    .catch(function (error) {
-      console.log(error);
-    });
+  getImages(word, networks) {
+    for (var i = 0; i < networks.length; i++) {
+      axios.get(
+        `${ENDPOINT}/${networks[i]}/`, {
+        params: { word }
+      })
+      .then(res => this.handleImagesResponse(res.data))
+      .catch(function (error) {
+        console.log(error);
+      });
+    }
   }
 
   handleImagesResponse(images) {
