@@ -5,7 +5,7 @@
   "config": {
     "wordToImages": {
       "development": "http://localhost:5001",
-      "production": "https://wordtoimages-zzohxnucsq.now.sh/"
+      "production": "https://wordtoimages-zzohxnucsq.now.sh"
     }
   },
   "dependencies": {
