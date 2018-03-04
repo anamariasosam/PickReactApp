@@ -31,8 +31,9 @@ class App extends Component {
       loadingImages: true,
     })
 
-    this.unsplash(word)
+    this.flickr(word)
     this.pixabay(word)
+    this.unsplash(word)
   }
 
   unsplash(word) {
@@ -49,6 +50,17 @@ class App extends Component {
   pixabay(word) {
     axios.get(
       `${ENDPOINT}/pixabay/`, {
+      params: { word }
+    })
+    .then(res => this.handleImagesResponse(res.data))
+    .catch(function (error) {
+      console.log(error);
+    });
+  }
+
+  flickr(word) {
+    axios.get(
+      `${ENDPOINT}/flickr/`, {
       params: { word }
     })
     .then(res => this.handleImagesResponse(res.data))

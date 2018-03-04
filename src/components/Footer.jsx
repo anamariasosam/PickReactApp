@@ -5,8 +5,9 @@ const Footer = () => (
   <footer className="pa4 pa5-l black-70 bt b--black-10">
     <div className="mb4-l cf">
       <h1 className="fl w-100 pv0 f6 fw6 ttu tracked mb4">Photos provided by</h1>
-      <Network name="unsplash" url="unsplash.com" />
-      <Network name="pixabay" url="pixabay.com" />
+      <Network name="unsplash" />
+      <Network name="pixabay" />
+      <Network name="flickr" />
     </div>
     <div className="dt dt--fixed w-100" >
       <div className="dn dtc-ns v-mid">
