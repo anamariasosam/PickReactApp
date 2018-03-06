@@ -28,4 +28,4 @@ See the section about [deployment](#deployment) for more information.
 
 ## Dependencies
 
-This app need this microservices in order to load the images: [https://github.com/anamariasosam/wordToImages](https://github.com/anamariasosam/wordToImages)
+This app needs this microservice in order to load the images: [https://github.com/anamariasosam/wordToImages](https://github.com/anamariasosam/wordToImages)
